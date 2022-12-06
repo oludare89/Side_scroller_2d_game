@@ -15,14 +15,15 @@ window.addEventListener('load', function(){
                         && this.keys.indexOf(e.key) === -1) {
                     this.keys.push(e.key);
                 }
-                console.log(e.key, this.keys);
+            });
+            window.addEventListener('keyup', e => {    
                 if (    e.key === 'ArrowDown' || 
                         e.key === 'ArrowUp' || 
                         e.key === 'ArrowRight' || 
                         e.key === 'ArrowLeft') {
                     this.keys.splice(this.keys.indexOf(e.key), 1);
                 }
-            })
+            });
         }
     }
 
@@ -42,7 +43,7 @@ window.addEventListener('load', function(){
         draw(context){
             context.fillStyle = 'white';
             context.fillRect(this.x, this.y, this.width, this.height);
-            context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height)
+            context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(input){
             this.x += this.speed;
@@ -74,7 +75,6 @@ window.addEventListener('load', function(){
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
-    
 
     function animate(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
