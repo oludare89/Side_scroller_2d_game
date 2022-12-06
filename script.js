@@ -85,11 +85,16 @@ window.addEventListener('load', function(){
             this.y = 0;
             this.width = 2400;
             this.height = 720;
+            this.speed = 20;
         }
         draw(context){
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
         }
-
+        update(){
+            this.x -= this.speed;
+            if (this.x < 0 - this.width) this.x = 0;
+        }
     }
 
     class Enemy {
@@ -111,6 +116,7 @@ window.addEventListener('load', function(){
     function animate(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         background.draw(ctx);
+        background.update();
         player.draw(ctx);
         player.update(input);
         requestAnimationFrame(animate);
