@@ -106,11 +106,16 @@ window.addEventListener('load', function(){
             this.width = 160;
             this.height = 119;
             this.image = document.getElementById('enemyImage');
-            this.x = 0;
-            this.y = 0;
+            this.x = this.gameWidth;
+            this.y = this.gameHeight - this.height;
+            this.frameX = 0;
+            this.speed = 0;
         }
         draw(context){
-            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+        }
+        update(){
+            this.x --;
         }
     }
 
@@ -134,6 +139,7 @@ window.addEventListener('load', function(){
         player.draw(ctx);
         player.update(input);
         enemy1.draw(ctx);
+        enemy1.update();
         requestAnimationFrame(animate);
     }
 
