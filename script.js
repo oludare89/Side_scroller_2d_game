@@ -180,7 +180,6 @@ window.addEventListener('load', function(){
         player.update(input, deltaTime);
         handleEnemies(deltaTime);
         requestAnimationFrame(animate);
-        console.log(enemies);
     }
 
     animate(0);
