@@ -127,11 +127,13 @@ window.addEventListener('load', function(){
             this.frameTimer = 0;
             this.frameInterval = 1000/this.fps;
             this.speed = 8;
+            this.markedForDeletion = false;
         }
         draw(context){
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(deltaTime){
+            // frame animation
             if (this.frameTimer > this.frameInterval){
                 if (this.frameX >= this.maxFrame) this.frameX = 0;
                 else this.frameX++;
@@ -139,7 +141,10 @@ window.addEventListener('load', function(){
             } else {
                 this.frameTimer += deltaTime;
             }
+            // movement of enemies
             this.x -= this.speed;
+            // removal of enemies once off screen
+            if (this.x < 0 - this.width) this.markedForDeletion = true;
         }
     }
 
@@ -155,6 +160,7 @@ window.addEventListener('load', function(){
             enemy.draw(ctx);
             enemy.update(deltaTime);
         })
+        enemies = enemies.filter(enemy => !enemy.markedForDeletion);
     }
 
     function displayStatusText(){
