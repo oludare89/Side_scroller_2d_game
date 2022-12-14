@@ -193,6 +193,13 @@ window.addEventListener('load', function(){
         context.fillText('Score: ' + score, 20, 50);
         context.fillStyle = 'white';
         context.fillText('Score: ' + score, 22, 52);
+        if (gameOver) {
+            context.textAlign = 'center';
+            context.fillStyle = 'black';
+            context.fillText('GAME OVER, try again!', canvas.width * 0.5, 200);
+            context.fillStyle = 'white';
+            context.fillText('GAME OVER, try again!', canvas.width * 0.5 + 2, 202);
+        }
     }
 
     const input = new InputHandler();
