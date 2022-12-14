@@ -60,8 +60,8 @@ window.addEventListener('load', function(){
         update(input, deltaTime, enemies){
             // collision detection
             enemies.forEach(enemy => {
-                const dx = enemy.x - this.x;
-                const dy = enemy.y - this.y;
+                const dx = (enemy.x + enemy.width * 0.5) - (this.x + this.width * 0.5);
+                const dy = (enemy.y + enemy.height * 0.5) - (this.y + this.height * 0.5);
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < enemy.width * 0.5 + this.width * 0.5){
                     gameOver = true;
