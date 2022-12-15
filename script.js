@@ -187,17 +187,18 @@ window.addEventListener('load', function(){
     }
 
     function displayStatusText(context){
+        context.textAlign = 'left';
         context.font = '40px Helvetica';
         context.fillStyle = 'black';
-        context.fillText('Score: ' + score, canvas.width * 0.1, 50);
+        context.fillText('Score: ' + score, canvas.width * 0.01, 50);
         context.fillStyle = 'white';
-        context.fillText('Score: ' + score, canvas.width * 0.1 + 2, 52);
+        context.fillText('Score: ' + score, canvas.width * 0.01 + 2, 52);
         if (gameOver) {
             context.textAlign = 'center';
             context.fillStyle = 'black';
-            context.fillText('GAME OVER, try again!', canvas.width * 0.5, 200);
+            context.fillText('GAME OVER, press Enter to restart!', canvas.width * 0.5, 200);
             context.fillStyle = 'white';
-            context.fillText('GAME OVER, try again!', canvas.width * 0.5 + 2, 202);
+            context.fillText('GAME OVER, press Enter to restart!', canvas.width * 0.5 + 2, 202);
         }
     }
 
