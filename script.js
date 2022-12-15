@@ -1,7 +1,7 @@
 window.addEventListener('load', function(){
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
-    canvas.width = 800;
+    canvas.width = 1400;
     canvas.height = 720;
     let enemies = [];
     let score = 0;
@@ -17,7 +17,7 @@ window.addEventListener('load', function(){
                         e.key === 'ArrowLeft') 
                         && this.keys.indexOf(e.key) === -1) {
                     this.keys.push(e.key);
-                }
+                } else if (e.key === "Enter" && gameOver) restartGame();
             });
             window.addEventListener('keyup', e => {    
                 if (    e.key === 'ArrowDown' || 
@@ -127,6 +127,9 @@ window.addEventListener('load', function(){
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.x = 0;
         }
+        restart(){
+            this.x = 0;
+        }
     }
 
     class Enemy {
@@ -186,9 +189,9 @@ window.addEventListener('load', function(){
     function displayStatusText(context){
         context.font = '40px Helvetica';
         context.fillStyle = 'black';
-        context.fillText('Score: ' + score, 20, 50);
+        context.fillText('Score: ' + score, canvas.width * 0.1, 50);
         context.fillStyle = 'white';
-        context.fillText('Score: ' + score, 22, 52);
+        context.fillText('Score: ' + score, canvas.width * 0.1 + 2, 52);
         if (gameOver) {
             context.textAlign = 'center';
             context.fillStyle = 'black';
@@ -200,6 +203,11 @@ window.addEventListener('load', function(){
 
     function restartGame(){
         player.restart();
+        background.restart();
+        enemies = [];
+        score = 0;
+        gameOver = false;
+        animate(0);
     }
 
     const input = new InputHandler();
