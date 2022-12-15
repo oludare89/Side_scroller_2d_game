@@ -36,7 +36,7 @@ window.addEventListener('load', function(){
             this.gameHeight = gameHeight;
             this.width = 200;
             this.height = 200;
-            this.x = 0;
+            this.x = 100;
             this.y = this.gameHeight - this.height;
             this.image = document.getElementById('playerImage');
             this.frameX = 0;
@@ -48,6 +48,12 @@ window.addEventListener('load', function(){
             this.speed = 0;
             this.vy = 0;
             this.weight = 1;
+        }
+        restart(){
+            this.x = 100;
+            this.y = this.gameHeight - this.height;
+            this.maxFrame = 8;
+            this.frameY = 0;
         }
         draw(context){
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
@@ -190,6 +196,10 @@ window.addEventListener('load', function(){
             context.fillStyle = 'white';
             context.fillText('GAME OVER, try again!', canvas.width * 0.5 + 2, 202);
         }
+    }
+
+    function restartGame(){
+        player.restart();
     }
 
     const input = new InputHandler();
