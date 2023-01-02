@@ -1,6 +1,6 @@
 # [Side scroller 2d game](https://oludare89.github.io/Side_scroller_2d_game/)
 
-This is a website showing 4 different enemy pattern movements as part of the JavaScript Game Development Course for Beginners from freeCodeCamp.org by Frank's Laboratory.
+This is a website showing a 2d side scroller game which is playable on mobile as part of the JavaScript Game Development Course for Beginners from freeCodeCamp.org by Frank's Laboratory.
 
 ## Technologies Used
 * HTML5
